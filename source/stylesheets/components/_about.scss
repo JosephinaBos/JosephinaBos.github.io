@@ -5,7 +5,7 @@
 
   & #body-about {
     position: absolute;
-    height: 642px;
+    height: 807px;
     width: 690px;
     top: 50px;
     right: 795px;
@@ -18,10 +18,9 @@
 .about {
   position: absolute;
   border-radius: 7px;
-  height: 600px;
+  height: 725px;
   width: 600px;
   background-color: #ef767a;
-  // margin: 50px 50px 50px 750px;
   top: 50px;
   right: 50px;
   bottom: 50px;
@@ -56,8 +55,12 @@
   & .about-contents {
     width: 550px;
     position: absolute;
-    margin: 30px auto;
+    margin: 20px auto 30px auto;
     left: 0;
     right: 0;
+
+    & p {
+      margin: 15px;
+    }
   }
 }
