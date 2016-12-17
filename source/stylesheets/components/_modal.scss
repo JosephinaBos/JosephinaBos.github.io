@@ -1,4 +1,28 @@
 #contact-modal {
-  color: #4e4d4d;
+  background: #ffe347;
   text-align: center;
+  height: 140px;
+  width: 600px;
+  border-radius: 7px;
+  margin: 35px auto;
+
+  & .modal-dialog {
+    color: #3c4859;
+    height: 200px;
+    width: 600px;
+
+    & .modal-header {
+      padding: 0px;
+
+      & h4 {
+        padding-bottom: 10px;
+      }
+    }
+
+    & .modal-body p {
+      padding-top: 0px;
+    }
+  }
 }
+
+

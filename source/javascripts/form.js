@@ -4,6 +4,6 @@ $(function(){
         var button = this;
         window.setTimeout(function(form){
             $(form).submit();
-        }, 1000, $(button).closest('form'));
+        }, 3000, $(button).closest('form'));
     });
 });
