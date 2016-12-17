@@ -1,5 +1,5 @@
 /* Main class */
-.navbar-wagon {
+.navbar {
   background: #ffe347;
   display: flex;
   height: 70px;
@@ -7,17 +7,28 @@
   align-items: center;
   justify-content: space-around;
   border-radius: 7px;
-  margin: 40px 0px 0px 40px;
+  margin: 50px 0px 0px 50px;
   font-size: 19px;
 
-  & a {
+  & li {
     color: #3c4859;
     margin: 0px 30px;
   }
 
-  & a:hover {
+  & li:hover {
     text-decoration: none;
+    cursor: pointer;
   }
+}
+
+.navbar-fixed-left {
+  position: fixed;
+  margin: 25px 0px 0px 50px;
+}
+
+.navbar-fixed-right {
+  position: fixed;
+  margin: 130px 50px 50px 750px;
 }
 
 @-webkit-keyframes hvr-pulse {

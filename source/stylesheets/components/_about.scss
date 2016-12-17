@@ -1,7 +1,42 @@
 .about {
   border-radius: 7px;
-  height: 450px;
+  height: 600px;
   width: 600px;
   background-color: #ef767a;
   margin: 50px 50px 50px 750px;
+  text-align: center;
+  position: relative;
+
+  & .about-header {
+    display: flex;
+    justify-content: space-around;
+    height: 150px;
+    width: 600px;
+
+    & .header-text {
+      width: 400px;
+
+      & h1 {
+        font-size: 40px;
+      }
+
+      & h3 {
+        font-size: 30px;
+      }
+    }
+
+    & #header-img {
+      margin-top: 20px;
+    }
+  }
+
+  & .about-contents {
+    width: 550px;
+    position: absolute;
+    margin: 30px auto;
+    // margin-left: auto;
+    // margin-right: auto;
+    left: 0;
+    right: 0;
+  }
 }
