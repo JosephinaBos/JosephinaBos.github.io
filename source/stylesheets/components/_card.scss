@@ -1,0 +1,26 @@
+.card {
+  width: 200px;
+  height: 210px;
+  background-color: #ffe347;
+  border-radius: 7px;
+
+  & h4 {
+    height: 40px;
+    background-color: #ef767a;
+    border-radius: 7px;
+    text-align: center;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    padding-top: 8px;
+    margin-top: 0px;
+  }
+
+  & a {
+    color: #3c4859;
+  }
+
+  & a:hover {
+    text-decoration: none;
+  }
+}
+
