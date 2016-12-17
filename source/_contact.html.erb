@@ -1,35 +1,37 @@
-<div class="contact">
-  <div class="contact-header">
-    <h3>Contact</h3>
-    <%= image_tag "images/chat-1.png", class: "avatar-large", id: "contact-img" %>
-  </div>
-  <div class="contact-content">
-    <ul class="social-media">
-      <li><a href="https://www.facebook.com/josephinawm" target="blank" class="hvr-wobble-horizontal"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-      <li><a href="https://www.instagram.com/josephinawm/" target="blank" class="hvr-wobble-vertical"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-      <li><a href="https://github.com/JosephinaBos" target="blank" class="hvr-wobble-vertical"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-      <li><a href="https://www.linkedin.com/in/josephinabos" target="blank" class="hvr-wobble-horizontal"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-    </ul>
-    <div class="contact-form">
-      <form action="https://getsimpleform.com/messages?form_api_token=9b160861a87bad8d14eecb0be12d16dd" method="post">
-        <input type="text" name="name" id="name" placeholder="Name">
-        <br>
-        <input type="email" name="email" id="email" placeholder="Email">
-        <br>
-        <textarea rows="10" name="message" id="message" placeholder="Message"></textarea>
-        <button type="submit" data-toggle="modal" data-target="#contact-modal" class="main-button hvr-wobble-skew" id="button-submit">Send</button>
-      </form>
+<div class="contact-wrapper">
+  <%= image_tag "images/body-contact.png", id: "body-contact" %>
+  <div class="contact">
+    <div class="contact-header">
+      <h3>Contact</h3>
+      <%= image_tag "images/chat-1.png", class: "avatar-large", id: "contact-img" %>
     </div>
-  </div>
-  <div id="contact-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h4 class="modal-title">Thanks!</h4>
+    <div class="contact-content">
+      <ul class="social-media">
+        <li><a href="https://www.facebook.com/josephinawm" target="blank" class="hvr-wobble-horizontal"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.instagram.com/josephinawm/" target="blank" class="hvr-wobble-vertical"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+        <li><a href="https://github.com/JosephinaBos" target="blank" class="hvr-wobble-vertical"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/josephinabos" target="blank" class="hvr-wobble-horizontal"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+      </ul>
+      <div class="contact-form">
+        <form action="https://getsimpleform.com/messages?form_api_token=9b160861a87bad8d14eecb0be12d16dd" method="post">
+          <input type="text" name="name" id="name" placeholder="Name">
+          <br>
+          <input type="email" name="email" id="email" placeholder="Email">
+          <br>
+          <textarea rows="10" name="message" id="message" placeholder="Message"></textarea>
+          <button type="submit" data-toggle="modal" data-target="#contact-modal" class="main-button hvr-wobble-skew" id="button-submit">Send</button>
+        </form>
       </div>
-      <div class="modal-body">
-        <p>Your message has been send, I'll get back to you shortly!</p>
+    </div>
+    <div id="contact-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h4 class="modal-title">Thanks!</h4>
+        </div>
+        <div class="modal-body">
+          <p>Your message has been send, I'll get back to you shortly!</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
-

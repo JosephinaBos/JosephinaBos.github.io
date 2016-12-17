@@ -1,9 +1,31 @@
+.about-wrapper{
+  position: relative;
+  width: 100vw;
+  height: auto;
+
+  & #body-about {
+    position: absolute;
+    height: 642px;
+    width: 690px;
+    top: 50px;
+    right: 795px;
+    bottom: 50px;
+    left: 50px;
+    margin-top: -35px;
+  }
+}
+
 .about {
+  position: absolute;
   border-radius: 7px;
   height: 600px;
   width: 600px;
   background-color: #ef767a;
-  margin: 50px 50px 50px 750px;
+  // margin: 50px 50px 50px 750px;
+  top: 50px;
+  right: 50px;
+  bottom: 50px;
+  left: 750px;
   text-align: center;
   position: relative;
 

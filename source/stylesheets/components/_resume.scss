@@ -1,9 +1,26 @@
+.resume-wrapper {
+  position: relative;
+  width: 100vw;
+  height: auto;
+
+  & #body-resume {
+    position: absolute;
+    height: 500px;
+    width: 739px;
+    top: 8px;
+    right: 95px;
+    bottom: 50px;
+    left: 651px;
+    margin-top: -46px;
+  }
+}
+
 .resume {
   border-radius: 7px;
   height: 450px;
   width: 600px;
   background-color: #23f0c7;
-  margin: 50px 750px 50px 50px;
+  margin: 100px 750px 50px 50px;
 
   & .resume-header {
     display: flex;

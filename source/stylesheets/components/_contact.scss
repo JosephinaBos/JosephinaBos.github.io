@@ -1,3 +1,20 @@
+.contact-wrapper {
+  position: relative;
+  width: 100vw;
+  height: auto;
+
+  & #body-contact {
+    position: absolute;
+    height: 606px;
+    width: 739px;
+    top: 8px;
+    right: 95px;
+    bottom: 50px;
+    left: 651px;
+    margin-top: -46px;
+  }
+}
+
 .contact {
   border-radius: 7px;
   height: 600px;
