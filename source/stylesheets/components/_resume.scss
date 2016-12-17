@@ -24,4 +24,21 @@
       margin-right: 75px;
     }
   }
+
+  & .resume-content {
+    text-align: center;
+
+    & h4 {
+      margin: 15px;
+    }
+
+    & ul {
+      margin: 20px auto 35px auto;
+      padding-left: 0px;
+    }
+
+    & ul {
+      list-style-type: none;
+    }
+  }
 }
