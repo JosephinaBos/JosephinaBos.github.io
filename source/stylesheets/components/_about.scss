@@ -18,7 +18,7 @@
 .about {
   position: absolute;
   border-radius: 7px;
-  height: 725px;
+  height: 740px;
   width: 600px;
   background-color: #ef767a;
   top: 50px;
@@ -27,10 +27,6 @@
   left: 750px;
   text-align: center;
   position: relative;
-
-  & .img-hidden {
-    display: none;
-  }
 
   & .about-header {
     display: flex;
@@ -59,12 +55,66 @@
   & .about-contents {
     width: 550px;
     position: absolute;
-    margin: 20px auto 30px auto;
+    margin: 25px auto 30px auto;
     left: 0;
     right: 0;
 
     & p {
       margin: 15px;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .about-wrapper #body-about {
+    height: 80px;
+    width: 100px;
+    top: 41px;
+    left: 97px;
+  }
+
+  .about {
+    position: absolute;
+    height: 1115px;
+    width: 300px;
+    background-color: #ef767a;
+    top: 75px;
+    right: 50px;
+    bottom: 50px;
+    left: 30px;
+    text-align: center;
+    position: relative;
+
+    & .about-header {
+      display: flex;
+      justify-content: space-around;
+      height: 140px;
+      width: 290px;
+      padding-top: 5px;
+
+      & .header-text {
+        width: 100px;
+
+        & h1 {
+          font-size: 20px;
+        }
+
+        & h3 {
+          font-size: 18px;
+        }
+      }
+
+      & #header-img {
+        margin-top: 35px;
+      }
+    }
+
+    & .about-contents {
+      width: 290px;
+
+      & p {
+        margin: 10px;
+      }
     }
   }
 }
