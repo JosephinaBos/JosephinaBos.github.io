@@ -28,6 +28,10 @@
   text-align: center;
   position: relative;
 
+  & .img-hidden {
+    display: none;
+  }
+
   & .about-header {
     display: flex;
     justify-content: space-around;
