@@ -14,7 +14,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   <!-- Use title if it's in the page YAML frontmatter -->
-  <title><%= current_page.data.title || "Josephina Bos - Full Stack Web Developer" %></title>
+  <title><%= current_page.data.title || "Josephina Bos" %></title>
+  <meta name="description" content="Full Stack Web Developer">
+  <meta name="keywords" content="josephina bos full stack web development ruby on rails amsterdam">
+  <meta http-equiv="language" content="EN">
+
+  <meta property="og:title"              content="Josephina Bos">
+  <meta property="og:image"              content="images/thumb.png">
+  <meta property="og:description"        content="Full Stack Web Developer">
+
+  <meta property="twitter:title"         content="Josephina Bos">
+  <meta property="twitter:image"         content="images/thumb.png">
+  <meta property="twitter:description"   content="Full Stack Web Developer">
 
   <%= stylesheet_link_tag "all" %>
   <%= javascript_include_tag  "all" %>

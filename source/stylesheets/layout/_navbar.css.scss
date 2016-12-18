@@ -7,9 +7,10 @@
   align-items: center;
   justify-content: space-around;
   border-radius: 7px;
-  margin: 50px 0px 0px 85px;
+  margin: 25px 0px 0px 80px;
   font-size: 19px;
   letter-spacing: 1px;
+  z-index: 10;
 
   & li {
     color: #3c4859;
@@ -22,14 +23,39 @@
   }
 }
 
-.navbar-fixed-left {
+.navbar-fixed-top-down {
   position: fixed;
-  margin: 25px 0px 0px 50px;
+  margin: 25px 0px 0px 80px;
 }
 
-.navbar-fixed-right {
+.navbar-fixed-about-down {
   position: fixed;
   margin: 130px 50px 50px 750px;
+}
+
+.navbar-fixed-resume-down {
+  position: fixed;
+  margin: 240px 0px 0px 80px;
+}
+
+.navbar-fixed-contact-down {
+  position: fixed;
+  margin: 678px 50px 50px 750px;
+}
+
+.navbar-fixed-top-up {
+  position: fixed;
+  margin: 25px 0px 0px 80px;
+}
+
+.navbar-fixed-about-up {
+  position: fixed;
+  margin: 50px 50px -1000px 750px;
+}
+
+.navbar-fixed-resume-up {
+  position: fixed;
+  margin: 1400px 0px 0px 80px;
 }
 
 @-webkit-keyframes hvr-pulse {
