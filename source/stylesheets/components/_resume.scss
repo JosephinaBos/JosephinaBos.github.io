@@ -5,7 +5,7 @@
 
   & #body-resume {
     position: absolute;
-    height: 500px;
+    height: 650px;
     width: 739px;
     top: 8px;
     right: 95px;
@@ -17,7 +17,7 @@
 
 .resume {
   border-radius: 7px;
-  height: 450px;
+  height: 750px;
   width: 600px;
   background-color: #23f0c7;
   margin: 100px 750px 50px 50px;
@@ -58,4 +58,27 @@
       list-style-type: none;
     }
   }
+
+  & .card-pink-wrapper {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+  }
+
+  .card-3 img {
+    width: 175px;
+    height: 175px;
+    margin: 25px 38px;
+    position: absolute;
+    top: 35px;
+  }
+
+  .card-4 img {
+    width: 175px;
+    height: 175px;
+    margin: 25px 38px;
+    position: absolute;
+    top: 35px;
+  }
 }
+

@@ -1,4 +1,4 @@
-.card {
+.card-yellow {
   width: 250px;
   height: 260px;
   background-color: #ffe347;
@@ -41,6 +41,49 @@
       border-top-left-radius: 0px;
       padding-top: 8px;
       margin-top: -50px;
+    }
+  }
+}
+
+.card-pink {
+  width: 250px;
+  height: 260px;
+  background-color: #ef767a;
+  border-radius: 7px;
+  position: relative;
+
+  & h4 {
+    position: absolute;
+    height: 40px;
+    width: 250px;
+    background-color: #6457a6;
+    border-radius: 7px;
+    text-align: center;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding-top: 8px;
+    top: -11px;
+  }
+
+  & .back-content {
+    position: relative;
+    font-size: 14px;
+    width: 240px;
+    height: 216px;
+    margin: 50px 5px 5px 5px;
+    text-align: center;
+
+      & h4 {
+      position: absolute;
+      height: 40px;
+      width: 250px;
+      background-color: #6457a6;
+      border-radius: 7px;
+      text-align: center;
+      border-top-right-radius: 0px;
+      border-top-left-radius: 0px;
+      padding-top: 8px;
+      top: -11px;
     }
   }
 }
