@@ -21,6 +21,10 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  & .img-hidden {
+    display: none;
+  }
 }
 
 .navbar-fixed-top-down {
