@@ -82,3 +82,53 @@
   }
 }
 
+@media only screen and (max-width: 500px) {
+  .resume-wrapper #body-resume {
+    height: 80px;
+    width: 100px;
+    top: 41px;
+    left: 97px;
+  }
+
+  .resume {
+    position: absolute;
+    height: 1115px;
+    width: 300px;
+    top: 60px;
+    bottom: 50px;
+    left: -50px;
+    text-align: center;
+    position: relative;
+
+    & .resume-content {
+      padding: 10px;
+    }
+
+    & .resume-header {
+      display: flex;
+      justify-content: space-around;
+      height: 140px;
+      width: 290px;
+      padding-top: 5px;
+      padding-left: 50px;
+
+        & h3 {
+          font-size: 30px;
+          margin: 40px;
+        }
+
+      & #header-img {
+        margin: 40px;
+      }
+    }
+
+    & .about-contents {
+      width: 290px;
+
+      & p {
+        margin: 10px;
+      }
+    }
+  }
+}
+
