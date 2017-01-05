@@ -5,7 +5,7 @@
 
   & #body-about {
     position: absolute;
-    height: 790px;
+    height: 800px;
     width: 680px;
     top: 50px;
     right: 795px;
@@ -18,7 +18,7 @@
 .about {
   position: absolute;
   border-radius: 7px;
-  height: 740px;
+  height: 825px;
   width: 600px;
   background-color: #ef767a;
   top: 50px;
@@ -52,6 +52,7 @@
     }
   }
 
+
   & .about-contents {
     width: 550px;
     position: absolute;
@@ -61,6 +62,11 @@
 
     & p {
       margin: 15px;
+    }
+
+    & .footer-column .column-three {
+      margin: 15px;
+      font-size: 14px;
     }
   }
 }
@@ -118,3 +124,4 @@
     }
   }
 }
+
