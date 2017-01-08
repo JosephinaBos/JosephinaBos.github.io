@@ -114,6 +114,60 @@
   }
 }
 
+@media only screen and (max-width: 500px) {
+
+  .contact {
+    margin: 175px 33px 40px;
+    width: 295px;
+    height: 520px;
+
+    & .contact-header h3 {
+      font-size: 30px;
+      width: 275px;
+      margin: 40px -630px -50px -225px;
+    }
+
+    & .contact-content {
+      flex-direction: column;
+      margin-top: -10px;
+
+      & .social-media {
+        width: 275px;
+        height: 65px;
+        flex-direction: row;
+        padding-left: 25px;
+      }
+
+      & .contact-form {
+      font-size: 10px;
+
+        & form #name {
+          width: 250px;
+          margin-left: 23px;
+          padding: 8px 12px;
+        }
+
+        & form #email {
+          width: 250px;
+          margin-left: 23px;
+          padding: 8px 12px;
+        }
+
+        & form #message {
+          width: 250px;
+          margin-left: 23px;
+          padding: 8px 12px;
+        }
+
+        & #button-submit {
+          margin-left: 210px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
 @-webkit-keyframes hvr-wobble-horizontal {
   16.65% {
     -webkit-transform: translateX(8px);
