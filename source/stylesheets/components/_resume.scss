@@ -83,16 +83,16 @@
 }
 
 @media only screen and (max-width: 500px) {
-  .resume-wrapper #body-resume {
-    height: 80px;
-    width: 100px;
-    top: 41px;
-    left: 97px;
+  .resume-wrapper {
+
+    & #body-resume {
+      display: none;
+    }
   }
 
   .resume {
     position: absolute;
-    height: 1115px;
+    height: 1090px;
     width: 300px;
     top: 60px;
     bottom: 50px;
@@ -101,20 +101,19 @@
     position: relative;
 
     & .resume-content {
-      padding: 10px;
+      padding: 0px 10px;
     }
 
     & .resume-header {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       height: 140px;
       width: 290px;
       padding-top: 5px;
-      padding-left: 50px;
 
         & h3 {
           font-size: 30px;
-          margin: 40px;
+          margin: 40px 40px 40px 20px;
         }
 
       & #header-img {
@@ -127,6 +126,23 @@
 
       & p {
         margin: 10px;
+      }
+    }
+
+    & .card-pink-wrapper {
+      flex-direction: column;
+      margin: 10px 10px 10px 25px;
+
+      & .flip-container {
+        margin-bottom: 25px;
+      }
+
+      & .card-3 img {
+        right: 0px;
+      }
+
+      & .card-4 img {
+        right: 0px;
       }
     }
   }

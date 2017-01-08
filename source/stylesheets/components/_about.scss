@@ -63,20 +63,15 @@
     & p {
       margin: 15px;
     }
-
-    & .footer-column .column-three {
-      margin: 15px;
-      font-size: 14px;
-    }
   }
 }
 
 @media only screen and (max-width: 500px) {
-  .about-wrapper #body-about {
-    height: 80px;
-    width: 100px;
-    top: 41px;
-    left: 97px;
+  .about-wrapper {
+
+    & #body-about {
+      display: none;
+    }
   }
 
   .about {
