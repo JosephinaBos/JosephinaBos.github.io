@@ -116,15 +116,41 @@
 
 @media only screen and (max-width: 500px) {
 
+  body {
+    width: auto;
+  }
+
+  .contact-wrapper {
+    width: auto;
+
+    & #body-contact {
+      display: none;
+    }
+  }
+
   .contact {
     margin: 175px 33px 40px;
     width: 295px;
     height: 520px;
 
-    & .contact-header h3 {
-      font-size: 30px;
-      width: 275px;
-      margin: 40px -630px -50px -225px;
+    & .contact-header {
+      position: relative;
+      width: auto;
+
+      & h3 {
+        font-size: 30px;
+        width: 275px;
+        margin-left: 0px;
+        left: 25px;
+        position: absolute;
+      }
+
+      & #contact-img {
+        margin-right: 0px;
+        position: absolute;
+        left: 170px;
+        top: 0px;
+      }
     }
 
     & .contact-content {
