@@ -48,5 +48,84 @@
       <%= partial "navbar" %>
       <%= yield %>
 
-    </body>
-  </html>
+  <script>
+   //Voeg de Surfly snippet toe
+   (function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
+    l=u.createElement(r);y=u.getElementsByTagName(r)[0];l.async=1;
+    l.src='https://surfly.com/surfly.js';y.parentNode.insertBefore(l,y);})
+   (window,document,'script','Surfly');
+
+    // Implementeer de Surfly init code, VOEG UW EIGEN WIDGET KEY TOE
+    Surfly.init({widget_key:'0c17c102b943457a82838fe64a5a0a0d'}, function(init) {
+      if (init.success) {
+        if (Surfly.currentSession) {
+          // Laat binnen de sessie de btn-end-session zien
+          document.getElementById('btn-end-session').style.display="block";
+          // Zorg ervoor dat de btn-start-session ruimte maakt om de session-id te laten zien
+          document.getElementById("btn-start-session").style.visibility="hidden";
+        }
+      }
+    });
+
+    // Functie sessionStart() die de sessie start, zodat deze toegepast kan worden op de "Start Session"-knop.
+    // ZorgT ervoor dat de knop de sessie-id laat zien zodat deze kan worden doorgegeven aan de agent
+
+
+    function sessionStart() {
+      var settings = {
+        block_until_agent_joins: false,
+        hide_until_agent_joins: true,
+        start_docked: true,
+        cookie_transfer_enabled: true,
+        cookie_transfer_proxying: false,
+        splash: false
+      };
+
+   // Code die ervoor zorgt dat de knop de sessie-id laat zien zodat deze kan worden doorgegeven aan de agent
+
+   Surfly.session(settings)
+   .on('session_started', function(session, event) {
+    document.getElementById("id-cover").style.display = "none";
+    console.log(session);
+    var showId = document.getElementById("btn-start-session");
+    showId.style.display = "block";
+    showId.textContent = session.pin;
+  }).startLeader();
+ }
+
+ <!-- Voeg hier de eigen chat box snippet toe -->
+
+ if(!window.__surfly){
+
+      // VERVANG DIT STUKJE CODE DOOR UW EIGEN CHATBOX SNIPPET CODE
+      window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
+        f[z]=function(){
+          (a.s=a.s||[]).push(arguments)};var a=f[z]._={
+          },q=c.methods.length;while(q--){(function(n){f[z][n]=function(){
+            f[z]("call",n,arguments)}})(c.methods[q])}a.l=c.loader;a.i=nt;a.p={
+              0:+new Date};a.P=function(u){
+                a.p[u]=new Date-a.p[0]};function s(){
+                  a.P(r);f[z](r)}f.addEventListener?f.addEventListener(r,s,false):f.attachEvent("on"+r,s);var ld=function(){function p(hd){
+                    hd="head";return["<",hd,"></",hd,"><",i,' onl' + 'oad="var d=',g,";d.getElementsByTagName('head')[0].",j,"(d.",h,"('script')).",k,"='",l,"//",a.l,"'",'"',"></",i,">"].join("")}var i="body",m=d[i];if(!m){
+                      return setTimeout(ld,100)}a.P(1);var j="appendChild",h="createElement",k="src",n=d[h]("div"),v=n[j](d[h](z)),b=d[h]("iframe"),g="document",e="domain",o;n.style.display="none";m.insertBefore(n,m.firstChild).id=z;b.frameBorder="0";b.id=z+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){
+                        b.src="javascript:false"}b.allowTransparency="true";v[j](b);try{
+                          b.contentWindow[g].open()}catch(w){
+                            c[e]=d[e];o="javascript:var d="+g+".open();d.domain='"+d.domain+"';";b[k]=o+"void(0);"}try{
+                              var t=b.contentWindow[g];t.write(p());t.close()}catch(x){
+                                b[k]=o+'d.write("'+p().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}a.P(2)};ld()};nt()})({
+                                  loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
+                                /* custom configuration goes here (www.olark.com/documentation) */
+                                olark.identify('7117-431-10-1219');
+      // TOT HIER
+
+    }
+
+    // Functie die de sessie beëindigt, zodat deze toegepast kan worden op de "End Session"-knop.
+
+    function sessionEnd() {
+      Surfly.currentSession.end();
+    }
+
+  </script>
+</body>
+</html>
