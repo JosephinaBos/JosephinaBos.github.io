@@ -60,6 +60,12 @@
 
       <%= partial "navbar" %>
       <%= yield %>
+
+  <div class="footer" id="footer">
+    <button class="basic-button" id="btn-start-session" onclick="sessionStart()"><p id="id-cover">Get Help</p></button>
+    <button class="basic-button" id="btn-end-session" onclick="sessionEnd()">Stop sessie</button>
+  </div>
+
   <script>
    //Add the Surfly snippet
     (function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
