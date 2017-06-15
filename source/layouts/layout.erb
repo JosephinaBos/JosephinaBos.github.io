@@ -63,6 +63,7 @@
 
   <div class="footer" id="footer">
     <button class="basic-button" id="btn-start-session" onclick="sessionStart()"><p id="id-cover">Get help</p></button>
+    <button class="basic-button" id="btn-end-queued-session" onclick="sessionEnd()">End session</button>
     <button class="basic-button" id="btn-end-session" onclick="sessionEnd()">End session</button>
   </div>
 
@@ -106,6 +107,7 @@
    // Code that shows the session-id so that it can be passed to the helpdesk agent
       Surfly.session(settings)
       .on('session_started', function(session, event) {
+        document.getElementById("btn-end-queued-session").style.display = "block";
         document.getElementById("id-cover").style.display = "none";
         console.log(session);
         var showId = document.getElementById("btn-start-session");
