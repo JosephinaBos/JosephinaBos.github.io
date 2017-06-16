@@ -147,6 +147,7 @@
       // check the cobrowsing session and set the message handler
       Surfly.session()
       .on('message', function(session, event) {
+        console.log(event)
         if (event.data === 'end') {
           // reply to the message
           sessionEnd();
