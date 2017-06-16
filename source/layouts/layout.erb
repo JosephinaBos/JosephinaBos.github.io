@@ -158,6 +158,7 @@
     // from outside a cobrowsing window, send a message to the inner scope:
       var endBtn = document.getElementById('btn-end-queued-session');
       endBtn.addEventListener('click', function() {
+        console.log('This block is executed')
         Surfly._allSessions[0].sendMessage({message: 'end'}, '*');
       });
     }
