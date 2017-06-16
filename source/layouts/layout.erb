@@ -157,7 +157,8 @@
     // from outside a cobrowsing window, send a message to the inner scope:
       var endBtn = document.getElementById('btn-end-queued-session');
       endBtn.addEventListener('click', function() {
-      Surfly.session.sendMessage('end');
+        Surfly.session.sendMessage('end');
+      });
     }
 
     //Function that ends the session, so that it can be applied to the "end Session"-button
