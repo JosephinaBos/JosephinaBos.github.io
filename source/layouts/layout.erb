@@ -143,17 +143,26 @@
 
     }
 
+    if (Surfly.isInsideSession) {
+      // check the cobrowsing session and set the message handler
+      Surfly.session()
+      .on('message', function(session, event) {
+        if (event.data === 'end') {
+          // reply to the message
+          Surfly.currentSession.end();
+        }
+      });
+    }
+    else {
+    // from outside a cobrowsing window, send a message to the inner scope:
+      Surfly.session.sendMessage('end');
+    }
+
     //Function that ends the session, so that it can be applied to the "end Session"-button
 
     function sessionEnd() {
       Surfly.currentSession.end();
     }
-
-    function queuedSessionEnd() {
-      debugger;
-      Surfly.currentSession.end();
-    }
-
   </script>
 </body>
 </html>
