@@ -148,17 +148,19 @@
       var endBtn = document.getElementById('btn-end-queued-session');
       endBtn.addEventListener('click', function() {
         console.log('This block is executed')
-        Surfly._allSessions[0].sendMessage({message: 'end'}, '*');
+        Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
       });
     }
     else {
     // from outside a cobrowsing window, send a message to the inner scope:
-      Surfly.currentSession()
+      Surfly.session()
       .on('message', function(session, event) {
-        console.log(event)
-        if (event.data === 'end') {
-          // reply to the message
-          sessionEnd();
+        if (window.location.origin === event.origin) {
+          console.log(event)
+          if (event.data === 'end') {
+            // reply to the message
+            sessionEnd();
+          }
         }
       });
     }
