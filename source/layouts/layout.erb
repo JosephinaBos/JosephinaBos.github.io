@@ -151,16 +151,15 @@
         Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
       });
     }
-    else {
+
+    if (Surfly.isInsideSession) {
     // from outside a cobrowsing window, send a message to the inner scope:
       Surfly.session()
       .on('message', function(session, event) {
-        if (window.location.origin === event.origin) {
-          console.log(event)
-          if (event.data === 'end') {
-            // reply to the message
-            sessionEnd();
-          }
+        console.log(event)
+        if (event.data === 'end') {
+          // reply to the message
+          sessionEnd();
         }
       });
     }
