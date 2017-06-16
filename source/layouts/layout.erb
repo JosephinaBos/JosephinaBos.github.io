@@ -149,12 +149,14 @@
       .on('message', function(session, event) {
         if (event.data === 'end') {
           // reply to the message
-          Surfly.currentSession.end();
+          sessionEnd()
         }
       });
     }
     else {
     // from outside a cobrowsing window, send a message to the inner scope:
+      var endBtn = document.getElementById('btn-end-queued-session');
+      endBtn.addEventListener('click', function() {
       Surfly.session.sendMessage('end');
     }
 
