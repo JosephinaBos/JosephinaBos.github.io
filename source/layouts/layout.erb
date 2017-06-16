@@ -63,7 +63,7 @@
 
   <div class="footer" id="footer">
     <button class="basic-button" id="btn-start-session" onclick="sessionStart()"><p id="id-cover">Get help</p></button>
-    <button class="basic-button" id="btn-end-queued-session" onclick="queuedSessionEnd()">End session</button>
+    <button class="basic-button" id="btn-end-queued-session">End session</button>
     <button class="basic-button" id="btn-end-session" onclick="sessionEnd()">End session</button>
   </div>
 
@@ -157,7 +157,7 @@
     // from outside a cobrowsing window, send a message to the inner scope:
       var endBtn = document.getElementById('btn-end-queued-session');
       endBtn.addEventListener('click', function() {
-        Surfly.session.sendMessage('end');
+        Surfly.session.sendMessage({message: 'end'}, '*');
       });
     }
 
