@@ -149,7 +149,7 @@
       .on('message', function(session, event) {
         if (event.data === 'end') {
           // reply to the message
-          Surfly.currentSession.end();
+          sessionEnd();
         }
       });
     }
