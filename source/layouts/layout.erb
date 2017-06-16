@@ -143,23 +143,23 @@
 
     }
 
-    if (Surfly.isInsideSession) {
+    if (!Surfly.isInsideSession) {
       // check the cobrowsing session and set the message handler
-      Surfly.session()
+      var endBtn = document.getElementById('btn-end-queued-session');
+      endBtn.addEventListener('click', function() {
+        console.log('This block is executed')
+        Surfly._allSessions[0].sendMessage({message: 'end'}, '*');
+      });
+    }
+    else {
+    // from outside a cobrowsing window, send a message to the inner scope:
+      Surfly.currentSession()
       .on('message', function(session, event) {
         console.log(event)
         if (event.data === 'end') {
           // reply to the message
           sessionEnd();
         }
-      });
-    }
-    else {
-    // from outside a cobrowsing window, send a message to the inner scope:
-      var endBtn = document.getElementById('btn-end-queued-session');
-      endBtn.addEventListener('click', function() {
-        console.log('This block is executed')
-        Surfly._allSessions[0].sendMessage({message: 'end'}, '*');
       });
     }
 
