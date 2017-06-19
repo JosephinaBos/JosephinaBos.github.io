@@ -152,8 +152,8 @@
       });
     }
     else {
-    // from outside a cobrowsing window, send a message to the inner scope:
-      Surfly.session()
+    // from inside a cobrowsing window, send a message to the outer scope:
+      Surfly.currentSession()
       .on('message', function(session, event) {
         console.log(event)
         if (event.data === 'end') {
