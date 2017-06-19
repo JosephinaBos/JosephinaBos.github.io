@@ -107,8 +107,9 @@
       Surfly.currentSession
       .on('message', function(session, event) {
         console.log(event)
-        if (event.data === 'end') {
+        if (event.data.message === 'end') {
           // reply to the message
+          console.log("It works!!!")
           sessionEnd();
         }
       });
