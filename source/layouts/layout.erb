@@ -143,6 +143,7 @@
 
     }
 
+    console.log("kk", Surfly.isInsideSession);
     if (!Surfly.isInsideSession) {
       // check the cobrowsing session and set the message handler
       var endBtn = document.getElementById('btn-end-queued-session');
@@ -153,6 +154,7 @@
     }
     else {
     // from inside a cobrowsing window, send a message to the outer scope:
+    console.log("Else is executed");
       Surfly.currentSession
       .on('message', function(session, event) {
         console.log(event)
