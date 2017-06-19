@@ -90,7 +90,30 @@
           // Zorg ervoor dat de btn-start-session ruimte maakt om de session-id te laten zien
           document.getElementById("btn-start-session").style.visibility="hidden";
         }
+
       }
+    console.log("kk", Surfly.isInsideSession);
+    if (!Surfly.isInsideSession) {
+      // check the cobrowsing session and set the message handler
+      var endBtn = document.getElementById('btn-end-queued-session');
+      endBtn.addEventListener('click', function() {
+        Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
+        console.log('Message is send to session window')
+      });
+    }
+    else {
+    // from inside a cobrowsing window, send a message to the outer scope:
+    console.log("Else is executed");
+      Surfly.currentSession
+      .on('message', function(session, event) {
+        console.log(event)
+        if (event.data === 'end') {
+          // reply to the message
+          sessionEnd();
+        }
+      });
+    }
+
     });
 
     // Functie sessionStart() die de sessie start, zodat deze toegepast kan worden op de "Start Session"-knop.
@@ -143,27 +166,7 @@
 
     }
 
-    console.log("kk", Surfly.isInsideSession);
-    if (!Surfly.isInsideSession) {
-      // check the cobrowsing session and set the message handler
-      var endBtn = document.getElementById('btn-end-queued-session');
-      endBtn.addEventListener('click', function() {
-        Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
-        console.log('Message is send to session window')
-      });
-    }
-    else {
-    // from inside a cobrowsing window, send a message to the outer scope:
-    console.log("Else is executed");
-      Surfly.currentSession
-      .on('message', function(session, event) {
-        console.log(event)
-        if (event.data === 'end') {
-          // reply to the message
-          sessionEnd();
-        }
-      });
-    }
+
 
     //Function that ends the session, so that it can be applied to the "end Session"-button
 
