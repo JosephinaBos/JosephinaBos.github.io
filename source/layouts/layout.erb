@@ -74,42 +74,31 @@
       l.src='https://surfly.com/surfly.js';y.parentNode.insertBefore(l,y);})
     (window,document,'script','Surfly');
 
-  //   Surfly.init({widget_key:'0c17c102b943457a82838fe64a5a0a0d'}, function(init) {
-  //   if (init.success) {
-  //   // display the default Surfly button
-  //     Surfly.button();
-  //   }
-  // });
-
-    // Implement the Surfly init code, ADD YOUR OWN WIDGET KEY // Implementeer de Surfly init code, VOEG UW EIGEN WIDGET KEY TOE
+    // Implement the Surfly init code, ADD YOUR OWN WIDGET KEY
     Surfly.init({widget_key:'0c17c102b943457a82838fe64a5a0a0d'}, function(init) {
       if (init.success) {
         if (Surfly.currentSession) {
-          // Laat binnen de sessie de btn-end-session zien
+          // Inside a session, show the btn-end-session
           document.getElementById('btn-end-session').style.display="block";
-          // Zorg ervoor dat de btn-start-session ruimte maakt om de session-id te laten zien
+          // Make sure the btn-start-session makes room for the session ID
           document.getElementById("btn-start-session").style.visibility="hidden";
         }
 
       }
-    console.log("kk", Surfly.isInsideSession);
     if (!Surfly.isInsideSession) {
       // check the cobrowsing session and set the message handler
       var endBtn = document.getElementById('btn-end-queued-session');
       endBtn.addEventListener('click', function() {
         Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
-        console.log('Message is send to session window')
       });
     }
     else {
     // from inside a cobrowsing window, send a message to the outer scope:
-    console.log("Else is executed");
       Surfly.currentSession
       .on('message', function(session, event) {
         console.log(event)
         if (event.data.message === 'end') {
           // reply to the message
-          console.log("It works!!!")
           sessionEnd();
         }
       });
@@ -117,8 +106,7 @@
 
     });
 
-    // Functie sessionStart() die de sessie start, zodat deze toegepast kan worden op de "Start Session"-knop.
-    // ZorgT ervoor dat de knop de sessie-id laat zien zodat deze kan worden doorgegeven aan de agent
+    //Function sessionStart, that can be applied to the "Start session"-button.
     function sessionStart() {
       var settings = {
         block_until_agent_joins: false,
@@ -167,10 +155,7 @@
 
     }
 
-
-
     //Function that ends the session, so that it can be applied to the "end Session"-button
-
     function sessionEnd() {
       Surfly.currentSession.end();
     }
