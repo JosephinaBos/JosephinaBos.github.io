@@ -85,24 +85,24 @@
         }
 
       }
-    if (!Surfly.isInsideSession) {
-      // check the cobrowsing session and set the message handler
-      var endBtn = document.getElementById('btn-end-queued-session');
-      endBtn.addEventListener('click', function() {
-        Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
-      });
-    }
-    else {
-    // from inside a cobrowsing window, send a message to the outer scope:
-      Surfly.currentSession
-      .on('message', function(session, event) {
-        console.log(event)
-        if (event.data.message === 'end') {
-          // reply to the message
-          sessionEnd();
-        }
-      });
-    }
+    // if (!Surfly.isInsideSession) {
+    //   // check the cobrowsing session and set the message handler
+    //   var endBtn = document.getElementById('btn-end-queued-session');
+    //   endBtn.addEventListener('click', function() {
+    //     Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
+    //   });
+    // }
+    // else {
+    // // from inside a cobrowsing window, send a message to the outer scope:
+    //   Surfly.currentSession
+    //   .on('message', function(session, event) {
+    //     console.log(event)
+    //     if (event.data.message === 'end') {
+    //       // reply to the message
+    //       sessionEnd();
+    //     }
+    //   });
+    // }
 
     });
 
