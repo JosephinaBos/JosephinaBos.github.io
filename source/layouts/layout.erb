@@ -143,7 +143,11 @@
         showId.style.display = "block";
         showId.textContent = session.pin;
     }).startLeader();
-}
+   .on('session_ended', function(session, event) {
+        // document.getElementById("btn-end-queued-session").style.display = "block";
+        document.getElementById("id-cover").style.display = "block";
+        showId.style.display = "none";
+    }
 
 <!-- Voeg hier de eigen chat box snippet toe -->
 
