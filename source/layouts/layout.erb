@@ -42,37 +42,37 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
 
-    <!-- Google Tag Manager -->
+      <!-- Google Tag Manager -->
 <!--     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-K2VNVQK');</script> -->
-    <!-- End Google Tag Manager -->
-  </head>
+})(window,document,'script','dataLayer','GTM-K2VNVQK');</script> -->
+<!-- End Google Tag Manager -->
+</head>
 
-    <body class="<%= page_classes %>">
+<body class="<%= page_classes %>">
 
     <!-- Google Tag Manager (noscript) -->
     <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2VNVQK"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
     <!-- End Google Tag Manager (noscript) -->
 
-      <%= partial "navbar" %>
-      <%= yield %>
+    <%= partial "navbar" %>
+    <%= yield %>
 
-  <div class="footer" id="footer">
-    <button class="basic-button" id="btn-start-session" onclick="sessionStart()"><p id="id-cover">Get help</p></button>
-    <!-- <button class="basic-button" id="btn-end-queued-session">End session</button> -->
-    <button class="basic-button" id="btn-end-session" onclick="sessionEnd()">End session</button>
-  </div>
+    <div class="footer" id="footer">
+        <button class="basic-button" id="btn-start-session" onclick="sessionStart()"><p id="id-cover">Get help</p></button>
+        <!-- <button class="basic-button" id="btn-end-queued-session">End session</button> -->
+        <button class="basic-button" id="btn-end-session" onclick="sessionEnd()">End session</button>
+    </div>
 
-  <script>
+    <script>
    //Add the Surfly snippet
-    (function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
+   (function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
       l=u.createElement(r);y=u.getElementsByTagName(r)[0];l.async=1;
       l.src='https://surfly.com/surfly.js';y.parentNode.insertBefore(l,y);})
-    (window,document,'script','Surfly');
+   (window,document,'script','Surfly');
 
     // Implement the Surfly init code, ADD YOUR OWN WIDGET KEY
     Surfly.init({widget_key:'0c17c102b943457a82838fe64a5a0a0d'}, function(init) {
@@ -82,9 +82,9 @@
           document.getElementById('btn-end-session').style.display="block";
           // Make sure the btn-start-session makes room for the session ID
           document.getElementById("btn-start-session").style.visibility="hidden";
-        }
-
       }
+
+  }
     // if (!Surfly.isInsideSession) {
     //   // check the cobrowsing session and set the message handler
     //   var endBtn = document.getElementById('btn-end-queued-session');
@@ -104,7 +104,7 @@
     //   });
     // }
 
-    });
+});
 
     //Function sessionStart, that can be applied to the "Start session"-button.
     function sessionStart() {
@@ -115,43 +115,44 @@
         cookie_transfer_enabled: true,
         cookie_transfer_proxying: false,
         splash: false
-      };
+        end_of_session_popup_url: "https://nl.surveymonkey.com/r/XRYJK96"
+    };
    // Code that shows the session-id so that it can be passed to the helpdesk agent
-      Surfly.session(settings)
-      .on('session_started', function(session, event) {
+   Surfly.session(settings)
+   .on('session_started', function(session, event) {
         // document.getElementById("btn-end-queued-session").style.display = "block";
         document.getElementById("id-cover").style.display = "none";
         console.log(session);
         var showId = document.getElementById("btn-start-session");
         showId.style.display = "block";
         showId.textContent = session.pin;
-      }).startLeader();
-    }
+    }).startLeader();
+}
 
-    <!-- Voeg hier de eigen chat box snippet toe -->
+<!-- Voeg hier de eigen chat box snippet toe -->
 
-    if(!window.__surfly){
+if(!window.__surfly){
 
       //Add your chat box snippet code (for this example I have used Olark)
- ;(function(o,l,a,r,k,y){if(o.olark)return;
-r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0];
-y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r);
-y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)};
-y.extend=function(i,j){y("extend",i,j)};
-y.identify=function(i){y("identify",k.i=i)};
-y.configure=function(i,j){y("configure",i,j);k.c[i]=j};
-k=y._={s:[],t:[+new Date],c:{},l:a};
-})(window,document,"static.olark.com/jsclient/loader.js");
-/* Add configuration calls below this comment */
-olark.identify('7117-431-10-1219');
+      ;(function(o,l,a,r,k,y){if(o.olark)return;
+        r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0];
+        y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r);
+        y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)};
+        y.extend=function(i,j){y("extend",i,j)};
+        y.identify=function(i){y("identify",k.i=i)};
+        y.configure=function(i,j){y("configure",i,j);k.c[i]=j};
+        k=y._={s:[],t:[+new Date],c:{},l:a};
+    })(window,document,"static.olark.com/jsclient/loader.js");
+    /* Add configuration calls below this comment */
+    olark.identify('7117-431-10-1219');
       //UNTIL HERE
 
-    }
+  }
 
     //Function that ends the session, so that it can be applied to the "end Session"-button
     function sessionEnd() {
       Surfly.currentSession.end();
-    }
-  </script>
+  }
+</script>
 </body>
 </html>
