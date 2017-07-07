@@ -78,8 +78,8 @@
           <p>And another one</p>
         </div>
         <div class="surfly-modal-footer">
-          <button class="modal-button" id="btn-start-session" onclick="sessionStart()">Agree</button>
-          <button class="modal-button" id="btn-exit-modal">Cancel</button>
+          <button class="modal-button" id="btn-start-session" onclick="sessionStart()" data-dismiss="modal" aria-label="Close">Agree</button>
+          <button class="modal-button" id="btn-exit-modal" data-dismiss="modal" aria-label="Close">Cancel</button>
         </div>
       </div>
     </div>
@@ -100,7 +100,6 @@
           // Make sure the btn-request-session makes room for the session ID
           document.getElementById("btn-request-session").style.visibility="hidden";
       }
-
   }
     // if (!Surfly.isInsideSession) {
     //   // check the cobrowsing session and set the message handler
