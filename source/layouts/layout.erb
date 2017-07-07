@@ -62,9 +62,26 @@
     <%= yield %>
 
     <div class="footer" id="footer">
-        <button class="basic-button" id="btn-start-session" onclick="sessionStart()"><p id="id-cover">Get help</p></button>
+        <button class="basic-button" id="btn-request-session" data-toggle="modal" data-target="#surfly-session-modal"><p id="id-cover">Get help</p></button>
         <!-- <button class="basic-button" id="btn-end-queued-session">End session</button> -->
         <button class="basic-button" id="btn-end-session" onclick="sessionEnd()">End session</button>
+    </div>
+
+    <div id="surfly-session-modal" class="modal fade" role="dialog">
+      <div class="surfly-modal-dialog">
+        <div class="surfly-modal-header">
+          <h4 class="surfly-modal-title">Co-browse Session Agreement</h4>
+        </div>
+        <div class="surfly-modal-body">
+          <p>A condition</p>
+          <p>Another condition</p>
+          <p>And another one</p>
+        </div>
+        <div class="surfly-modal-footer">
+          <button class="modal-button" id="btn-start-session" onclick="sessionStart()">Agree</button>
+          <button class="modal-button" id="btn-exit-modal">Cancel</button>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -80,8 +97,8 @@
         if (Surfly.currentSession) {
           // Inside a session, show the btn-end-session
           document.getElementById('btn-end-session').style.display="block";
-          // Make sure the btn-start-session makes room for the session ID
-          document.getElementById("btn-start-session").style.visibility="hidden";
+          // Make sure the btn-request-session makes room for the session ID
+          document.getElementById("btn-request-session").style.visibility="hidden";
       }
 
   }
@@ -123,7 +140,7 @@
         // document.getElementById("btn-end-queued-session").style.display = "block";
         document.getElementById("id-cover").style.display = "none";
         console.log(session);
-        var showId = document.getElementById("btn-start-session");
+        var showId = document.getElementById("btn-request-session");
         showId.style.display = "block";
         showId.textContent = session.pin;
     }).startLeader();

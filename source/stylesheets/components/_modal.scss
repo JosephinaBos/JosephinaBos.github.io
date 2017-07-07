@@ -25,4 +25,53 @@
   }
 }
 
+#surfly-session-modal {
+    background: #ffd05b;
+    text-align: center;
+    height: 450px;
+    width: 730px;
+    border-radius: 7px;
+    margin: 150px auto;
+    position: relative;
 
+    & .surfly-modal-dialog {
+      color: #3c4859;
+      height: 200px;
+      width: 600px;
+
+    & .surfly-modal-header {
+      padding: 0px;
+      position: absolute;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+
+      & h4 {
+        padding-bottom: 100px;
+        font-size: 50px;
+      }
+    }
+
+    & .surfly-modal-body p {
+      padding-top: 0px;
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+.modal-button {
+    background-color: #EBAA7C;
+    border: 1px solid #EBAA7C;
+    border-radius: 40px;
+    width: 125px;
+    height: 50px;
+    font-size: 14px;
+    color: #2d2d2d;
+    letter-spacing: 2px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
