@@ -132,22 +132,17 @@
         cookie_transfer_proxying: false,
         splash: false,
         end_of_session_popup_url: "https://nl.surveymonkey.com/r/XRYJK96"
-    };
+      };
    // Code that shows the session-id so that it can be passed to the helpdesk agent
-   Surfly.session(settings)
-   .on('session_started', function(session, event) {
-        // document.getElementById("btn-end-queued-session").style.display = "block";
-        document.getElementById("id-cover").style.display = "none";
-        console.log(session);
-        var showId = document.getElementById("btn-request-session");
-        showId.style.display = "block";
-        showId.textContent = session.pin;
-    }).startLeader();
-   .on('session_ended', function(session, event) {
-        // document.getElementById("btn-end-queued-session").style.display = "block";
-        document.getElementById("id-cover").style.display = "block";
-        showId.style.display = "none";
-    }
+     Surfly.session(settings)
+     .on('session_started', function(session, event) {
+          // document.getElementById("btn-end-queued-session").style.display = "block";
+          document.getElementById("id-cover").style.display = "none";
+          console.log(session);
+          var showId = document.getElementById("btn-request-session");
+          showId.style.display = "block";
+          showId.textContent = session.pin;
+      }).startLeader();
 
 <!-- Voeg hier de eigen chat box snippet toe -->
 
@@ -172,6 +167,12 @@ if(!window.__surfly){
     //Function that ends the session, so that it can be applied to the "end Session"-button
     function sessionEnd() {
       Surfly.currentSession.end();
+      Surfly.session(settings)
+      .on('session_ended', function(session, event) {
+        // document.getElementById("btn-end-queued-session").style.display = "block";
+        document.getElementById("id-cover").style.display = "block";
+        showId.style.display = "none";
+    }
   }
 </script>
 </body>
