@@ -170,10 +170,7 @@ if(!window.__surfly){
       Surfly.currentSession.end();
       Surfly.session(settings)
       .on('session_ended', function(session, event) {
-        // document.getElementById("btn-end-queued-session").style.display = "block";
-        document.getElementById("id-cover").style.display = "block";
-        var showId = document.getElementById("btn-request-session");
-        showId.style.display = "none";
+        document.getElementById("btn-request-session").showId.style.textContent = "Get help";
     })
   }
 </script>
