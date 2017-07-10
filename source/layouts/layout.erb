@@ -105,7 +105,7 @@
       Surfly.on('session_ended', function(session) {
         console.log(9);
         document.getElementById("btn-request-session").textContent = "Get help";
-    }
+    })
     // if (!Surfly.isInsideSession) {
     //   // check the cobrowsing session and set the message handler
     //   var endBtn = document.getElementById('btn-end-queued-session');
@@ -173,7 +173,6 @@ if(!window.__surfly){
     //Function that ends the session, so that it can be applied to the "end Session"-button
     function sessionEnd() {
       Surfly.currentSession.end();
-)
   }
 </script>
 </body>
