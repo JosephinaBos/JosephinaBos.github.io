@@ -168,8 +168,7 @@ if(!window.__surfly){
     //Function that ends the session, so that it can be applied to the "end Session"-button
     function sessionEnd() {
       Surfly.currentSession.end();
-      Surfly.session(settings)
-      .on('session_ended', function(session, event) {
+      Surfly.on('session_ended', function(session) {
         document.getElementById("btn-request-session").style.textContent = "Get help";
     })
   }
