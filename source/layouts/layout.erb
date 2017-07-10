@@ -169,7 +169,7 @@ if(!window.__surfly){
     function sessionEnd() {
       Surfly.currentSession.end();
       Surfly.on('session_ended', function(session) {
-        document.getElementById("btn-request-session").style.textContent = "Get help";
+        document.getElementById("btn-request-session").textContent = "Get help";
     })
   }
 </script>
