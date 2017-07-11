@@ -103,17 +103,18 @@
   }
 
     Surfly.on('session_ended', function(session) {
-        var sessionLink = session.leaderLink
-        var allSessions = Surfly._allSessions
-        var activeSessions = []
-        for (sess in allSessions) {
-            if(sess.leaderLink != sessionLink) {
-                activeSessions.push(sess);
+        var sessionLink = session.leaderLink;
+        var allSessions = Surfly._allSessions;
+        var activeSessions = [];
+        for (var i = 0; i < allSessions.length; i++) {
+            if (allSessions[i].leaderLink !== sessionLink) {
+                activeSessions.push(allSessions[i]);
             }
         }
+        Surfly._allSessions = activeSessions;
+
         // create new array. iterate over all sessions and push all sessions that don't contain the leaderLink into the new array
         // and reassign it to _allSessions
-        allSessions = activeSessions
         document.getElementById("btn-request-session").textContent = "Get help";
     })
     // if (!Surfly.isInsideSession) {
