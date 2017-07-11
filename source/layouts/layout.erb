@@ -107,7 +107,7 @@
         var allSessions = Surfly._allSessions
         var session_index = allSessions.indexOf(sessionLink)
                 // remove element from array
-        if (index > -1) {
+        if (session_index > -1) {
             array.splice(session_index, 1);
         }
         document.getElementById("btn-request-session").textContent = "Get help";
