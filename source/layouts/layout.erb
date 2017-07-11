@@ -102,9 +102,14 @@
       }
   }
 
-      Surfly.on('session_ended', function(session) {
-        debugger;
-        console.log(9);
+    Surfly.on('session_ended', function(session) {
+        var sessionLink = session.leaderLink
+        var allSessions = Surfly._allSessions
+        var session_index = allSessions.indexOf(sessionLink)
+                // remove element from array
+        if (index > -1) {
+            array.splice(session_index, 1);
+        }
         document.getElementById("btn-request-session").textContent = "Get help";
     })
     // if (!Surfly.isInsideSession) {
@@ -125,7 +130,6 @@
     //     }
     //   });
     // }
-
 });
 
     //Function sessionStart, that can be applied to the "Start session"-button.
