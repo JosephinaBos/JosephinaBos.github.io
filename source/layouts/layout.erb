@@ -107,10 +107,8 @@
         var allSessions = Surfly._allSessions
         var activeSessions = []
         for (sess in allSessions) {
-            for (element in sess) {
-                if(element.leaderLink != sessionLink) {
-                    activeSessions.push(sess);
-                }
+            if(sess.leaderLink != sessionLink) {
+                activeSessions.push(sess);
             }
         }
         // create new array. iterate over all sessions and push all sessions that don't contain the leaderLink into the new array
