@@ -103,17 +103,16 @@
   }
 
     Surfly.on('session_ended', function(session) {
-        debugger
         var sessionLink = session.leaderLink
         var allSessions = Surfly._allSessions
         var activeSessions = []
-        allSessions.forEach(function(sess) {
-            sess.forEach(function(element) {
+        for (sess in allSessions) {
+            for (element in sess) {
                 if(element.leaderLink != sessionLink) {
                     activeSessions.push(session);
                 }
-            })
-        })
+            }
+        }
         // create new array. iterate over all sessions and push all sessions that don't contain the leaderLink into the new array
         // and reassign it to _allSessions
         allSessions = activeSessions
