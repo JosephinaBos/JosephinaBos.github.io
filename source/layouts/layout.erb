@@ -61,9 +61,102 @@
     <%= partial "navbar" %>
     <%= yield %>
 
-    <div class="footer" id="footer">
+    <!-- Buttons to control the Surfly session -->
+<div class="footer" id="footer">
+  <button class="basic-button" id="btn-start-session" onclick="sessionStart()">Get Help</button>
+  <button class="basic-button" id="btn-end-session" onclick="sessionEnd()">Stop sessie</button>
+</div>
+
+<!-- Button styling -->
+<style type="text/css">
+  .basic-button {
+    background-color: #ffd05b;
+    width: 115px;
+    border: 1px solid #ffd05b;
+    border-radius: 33px;
+    height: 50px;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-weight: bold;
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+    position: fixed;
+  }
+
+  .basic-button:hover {
+    cursor: pointer;
+  }
+
+  .basic-button p {
+    margin-top: 14px;
+    font-size: 13px;
+  }
+
+  #btn-end-session, #btn-start-session {
+    display: none;
+  }
+</style>
+
+<script>
+  // Make sure that GTM does not hide the buttons
+  document.getElementById('footer').parentElement.removeAttribute('style');
+
+  // Add the Surfly snippet -->
+  (function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
+  l=u.createElement(r);y=u.getElementsByTagName(r)[0];l.async=1;
+  l.src='https://surfly.com/surfly.js';y.parentNode.insertBefore(l,y);})
+  (window,document,'script','Surfly');
+
+  // Implement the Surfly init code, ADD YOUR OWN WIDGET KEY
+  Surfly.init({widget_key:'0c17c102b943457a82838fe64a5a0a0d'}, function(init) {
+    if (init.success) {
+      if (Surfly.isInsideSession) {
+        // Inside the session, display the btn-end-session
+        document.getElementById('btn-end-session').style.display = "block";
+      } else {
+        // Outside the session, display the btn-start-session
+        document.getElementById("btn-start-session").style.display = "block";
+
+        // Add your chat box snippet code here
+
+      }
+    }
+  });
+
+  // Function sessionStart() that starts the Surfly session, so that it can be applied to the "Start Session"-button
+  // Add options according to you wishes
+  function sessionStart() {
+    var settings = {
+    block_until_agent_joins: false,
+    hide_until_agent_joins: true,
+    start_docked: true,
+    cookie_transfer_enabled: true,
+    cookie_transfer_proxying: false,
+    splash: false
+  };
+
+  // Code that shows the session-id so that it can be passed to the helpdesk agent
+  var startButton = document.getElementById("btn-start-session");
+  startButton.disabled = "true";
+  Surfly.session(settings)
+    .on('session_started', function(session, event) {
+      startButton.textContent = session.pin;
+    })
+    .startLeader();
+  }
+
+  // Function that ends the session, so that it can be applied to the "end Session"-button
+  function sessionEnd() {
+    Surfly.currentSession.end();
+  }
+</script>
+
+<!--     <div class="footer" id="footer">
         <button class="basic-button" id="btn-request-session" data-toggle="modal" data-target="#surfly-session-modal"><p id="id-cover">Get help</p></button>
-        <!-- <button class="basic-button" id="btn-end-queued-session">End session</button> -->
         <button class="basic-button" id="btn-end-session" onclick="sessionEnd()">End session</button>
     </div>
 
@@ -82,9 +175,11 @@
           <button class="modal-button" id="btn-exit-modal" data-dismiss="modal" aria-label="Close">Cancel</button>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <script>
+
+
+<!--     <script>
    //Add the Surfly snippet
    (function(s,u,r,f,l,y){s[f]=s[f]||{init:function(){s[f].q=arguments}};
       l=u.createElement(r);y=u.getElementsByTagName(r)[0];l.async=1;
@@ -112,29 +207,26 @@
             }
         }
         Surfly._allSessions = activeSessions;
-
-        // create new array. iterate over all sessions and push all sessions that don't contain the leaderLink into the new array
-        // and reassign it to _allSessions
         document.getElementById("btn-request-session").textContent = "Get help";
     })
-    // if (!Surfly.isInsideSession) {
-    //   // check the cobrowsing session and set the message handler
-    //   var endBtn = document.getElementById('btn-end-queued-session');
-    //   endBtn.addEventListener('click', function() {
-    //     Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
-    //   });
-    // }
-    // else {
-    // // from inside a cobrowsing window, send a message to the outer scope:
-    //   Surfly.currentSession
-    //   .on('message', function(session, event) {
-    //     console.log(event)
-    //     if (event.data.message === 'end') {
-    //       // reply to the message
-    //       sessionEnd();
-    //     }
-    //   });
-    // }
+    if (!Surfly.isInsideSession) {
+      // check the cobrowsing session and set the message handler
+      var endBtn = document.getElementById('btn-end-queued-session');
+      endBtn.addEventListener('click', function() {
+        Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
+      });
+    }
+    else {
+    // from inside a cobrowsing window, send a message to the outer scope:
+      Surfly.currentSession
+      .on('message', function(session, event) {
+        console.log(event)
+        if (event.data.message === 'end') {
+          // reply to the message
+          sessionEnd();
+        }
+      });
+    }
 });
 
     //Function sessionStart, that can be applied to the "Start session"-button.
@@ -184,6 +276,6 @@ if(!window.__surfly){
     function sessionEnd() {
       Surfly.currentSession.end();
   }
-</script>
+</script> -->
 </body>
 </html>
