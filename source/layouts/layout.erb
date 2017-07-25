@@ -100,8 +100,9 @@
           document.getElementById('btn-end-session').style.display="block";
           // Make sure the btn-request-session makes room for the session ID
           document.getElementById("btn-request-session").style.visibility="hidden";
+        }
       }
-  }
+    });
 
     Surfly.on('session_ended', function(session) {
         var sessionLink = session.leaderLink;
