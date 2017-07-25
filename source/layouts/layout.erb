@@ -61,48 +61,7 @@
     <%= partial "navbar" %>
     <%= yield %>
 
-    <!-- Buttons to control the Surfly session -->
-<div class="footer" id="footer">
-  <button class="basic-button" id="btn-start-session" onclick="sessionStart()">Get Help</button>
-  <button class="basic-button" id="btn-end-session" onclick="sessionEnd()">Stop sessie</button>
-</div>
-
-<!-- Button styling -->
-<style type="text/css">
-  .basic-button {
-    background-color: #ffd05b;
-    width: 115px;
-    border: 1px solid #ffd05b;
-    border-radius: 33px;
-    height: 50px;
-    font-size: 14px;
-    color: #333333;
-    letter-spacing: 1px;
-    font-family: sans-serif;
-    font-weight: bold;
-    position: absolute;
-    left: 15px;
-    bottom: 15px;
-    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
-    position: fixed;
-  }
-
-  .basic-button:hover {
-    cursor: pointer;
-  }
-
-  .basic-button p {
-    margin-top: 14px;
-    font-size: 13px;
-  }
-
-  #btn-end-session, #btn-start-session {
-    display: none;
-  }
-</style>
-
-
-<!--     <div class="footer" id="footer">
+    <div class="footer" id="footer">
         <button class="basic-button" id="btn-request-session" data-toggle="modal" data-target="#surfly-session-modal"><p id="id-cover">Get help</p></button>
         <button class="basic-button" id="btn-end-session" onclick="sessionEnd()">End session</button>
     </div>
@@ -122,7 +81,7 @@
           <button class="modal-button" id="btn-exit-modal" data-dismiss="modal" aria-label="Close">Cancel</button>
         </div>
       </div>
-    </div> -->
+    </div>
 
 
 
@@ -156,25 +115,25 @@
         Surfly._allSessions = activeSessions;
         document.getElementById("btn-request-session").textContent = "Get help";
     })
-    if (!Surfly.isInsideSession) {
-      // check the cobrowsing session and set the message handler
-      var endBtn = document.getElementById('btn-end-queued-session');
-      endBtn.addEventListener('click', function() {
-        Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
-      });
-    }
-    else {
-    // from inside a cobrowsing window, send a message to the outer scope:
-      Surfly.currentSession
-      .on('message', function(session, event) {
-        console.log(event)
-        if (event.data.message === 'end') {
-          // reply to the message
-          sessionEnd();
-        }
-      });
-    }
-});
+//     if (!Surfly.isInsideSession) {
+//       // check the cobrowsing session and set the message handler
+//       var endBtn = document.getElementById('btn-end-queued-session');
+//       endBtn.addEventListener('click', function() {
+//         Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
+//       });
+//     }
+//     else {
+//     // from inside a cobrowsing window, send a message to the outer scope:
+//       Surfly.currentSession
+//       .on('message', function(session, event) {
+//         console.log(event)
+//         if (event.data.message === 'end') {
+//           // reply to the message
+//           sessionEnd();
+//         }
+//       });
+//     }
+// });
 
     //Function sessionStart, that can be applied to the "Start session"-button.
     function sessionStart() {
@@ -226,4 +185,3 @@ if(!window.__surfly){
 </script>
 </body>
 </html>
-
