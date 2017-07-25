@@ -93,96 +93,120 @@
    (window,document,'script','Surfly');
 
     // Implement the Surfly init code, ADD YOUR OWN WIDGET KEY
-    Surfly.init({widget_key:'0c17c102b943457a82838fe64a5a0a0d'}, function(init) {
-      if (init.success) {
-        if (Surfly.currentSession) {
-          // Inside a session, show the btn-end-session
-          document.getElementById('btn-end-session').style.display="block";
-          // Make sure the btn-request-session makes room for the session ID
-          document.getElementById("btn-request-session").style.visibility="hidden";
-        }
-      }
-    });
+    Surfly.init({
+           widget_key: '0c17c102b943457a82838fe64a5a0a0d'
+       }, function(init) {
+           if (init.success) {
+               if (Surfly.currentSession) {
+                   // Inside a session, show the btn-end-session
+                   document.getElementById('btn-end-session').style.display = "block";
+                   // Make sure the btn-request-session makes room for the session ID
+                   document.getElementById("btn-request-session").style.visibility = "hidden";
+               }
+           }
 
-    Surfly.on('session_ended', function(session) {
-        var sessionLink = session.leaderLink;
-        var allSessions = Surfly._allSessions;
-        var activeSessions = [];
-        for (var i = 0; i < allSessions.length; i++) {
-            if (allSessions[i].leaderLink !== sessionLink) {
-                activeSessions.push(allSessions[i]);
-            }
-        }
-        Surfly._allSessions = activeSessions;
-        document.getElementById("btn-request-session").textContent = "Get help";
-    })
-//     if (!Surfly.isInsideSession) {
-//       // check the cobrowsing session and set the message handler
-//       var endBtn = document.getElementById('btn-end-queued-session');
-//       endBtn.addEventListener('click', function() {
-//         Surfly._allSessions[0].sendMessage({message: 'end'}, window.location.origin);
-//       });
-//     }
-//     else {
-//     // from inside a cobrowsing window, send a message to the outer scope:
-//       Surfly.currentSession
-//       .on('message', function(session, event) {
-//         console.log(event)
-//         if (event.data.message === 'end') {
-//           // reply to the message
-//           sessionEnd();
-//         }
-//       });
-//     }
-// });
+           Surfly.on('session_ended', function(session) {
+               var sessionLink = session.leaderLink;
+               var allSessions = Surfly._allSessions;
+               var activeSessions = [];
+               for (var i = 0; i < allSessions.length; i++) {
+                   if (allSessions[i].leaderLink !== sessionLink) {
+                       activeSessions.push(allSessions[i]);
+                   }
+               }
+               Surfly._allSessions = activeSessions;
+               document.getElementById("btn-request-session").textContent = "Get help";
+           })
+           if (!Surfly.isInsideSession) {
+               // check the cobrowsing session and set the message handler
+               var endBtn = document.getElementById('btn-end-queued-session');
+               endBtn.addEventListener('click', function() {
+                   Surfly._allSessions[0].sendMessage({
+                       message: 'end'
+                   }, window.location.origin);
+               });
+           } else {
+               // from inside a cobrowsing window, send a message to the outer scope:
+               Surfly.currentSession
+                   .on('message', function(session, event) {
+                       console.log(event)
+                       if (event.data.message === 'end') {
+                           // reply to the message
+                           sessionEnd();
+                       }
+                   });
+           }
+       });
 
-    //Function sessionStart, that can be applied to the "Start session"-button.
-    function sessionStart() {
-      var settings = {
-        block_until_agent_joins: false,
-        hide_until_agent_joins: true,
-        start_docked: true,
-        cookie_transfer_enabled: true,
-        cookie_transfer_proxying: false,
-        splash: false,
-        end_of_session_popup_url: "https://nl.surveymonkey.com/r/XRYJK96"
-      };
-   // Code that shows the session-id so that it can be passed to the helpdesk agent
-     Surfly.session(settings)
-     .on('session_started', function(session, event) {
-          // document.getElementById("btn-end-queued-session").style.display = "block";
-          document.getElementById("id-cover").style.display = "none";
-          console.log(session);
-          var showId = document.getElementById("btn-request-session");
-          showId.style.display = "block";
-          showId.textContent = session.pin;
-      }).startLeader();
- }
 
-// Voeg hier de eigen chat box snippet toe
+       //Function sessionStart, that can be applied to the "Start session"-button.
+       function sessionStart() {
+           var settings = {
+               block_until_agent_joins: false,
+               hide_until_agent_joins: true,
+               start_docked: true,
+               cookie_transfer_enabled: true,
+               cookie_transfer_proxying: false,
+               splash: false,
+               end_of_session_popup_url: "https://nl.surveymonkey.com/r/XRYJK96"
+           };
+           // Code that shows the session-id so that it can be passed to the helpdesk agent
+           Surfly.session(settings)
+               .on('session_started', function(session, event) {
+                   // document.getElementById("btn-end-queued-session").style.display = "block";
+                   document.getElementById("id-cover").style.display = "none";
+                   console.log(session);
+                   var showId = document.getElementById("btn-request-session");
+                   showId.style.display = "block";
+                   showId.textContent = session.pin;
+               }).startLeader();
+       }
 
-if(!window.__surfly){
+       // Voeg hier de eigen chat box snippet toe
 
-      //Add your chat box snippet code (for this example I have used Olark)
-      ;(function(o,l,a,r,k,y){if(o.olark)return;
-        r="script";y=l.createElement(r);r=l.getElementsByTagName(r)[0];
-        y.async=1;y.src="//"+a;r.parentNode.insertBefore(y,r);
-        y=o.olark=function(){k.s.push(arguments);k.t.push(+new Date)};
-        y.extend=function(i,j){y("extend",i,j)};
-        y.identify=function(i){y("identify",k.i=i)};
-        y.configure=function(i,j){y("configure",i,j);k.c[i]=j};
-        k=y._={s:[],t:[+new Date],c:{},l:a};
-    })(window,document,"static.olark.com/jsclient/loader.js");
-    /* Add configuration calls below this comment */
-    olark.identify('7117-431-10-1219');
-      //UNTIL HERE
+       if (!window.__surfly) {
 
-  }
+           //Add your chat box snippet code (for this example I have used Olark)
+           ;
+           (function(o, l, a, r, k, y) {
+               if (o.olark) return;
+               r = "script";
+               y = l.createElement(r);
+               r = l.getElementsByTagName(r)[0];
+               y.async = 1;
+               y.src = "//" + a;
+               r.parentNode.insertBefore(y, r);
+               y = o.olark = function() {
+                   k.s.push(arguments);
+                   k.t.push(+new Date)
+               };
+               y.extend = function(i, j) {
+                   y("extend", i, j)
+               };
+               y.identify = function(i) {
+                   y("identify", k.i = i)
+               };
+               y.configure = function(i, j) {
+                   y("configure", i, j);
+                   k.c[i] = j
+               };
+               k = y._ = {
+                   s: [],
+                   t: [+new Date],
+                   c: {},
+                   l: a
+               };
+           })(window, document, "static.olark.com/jsclient/loader.js");
+           /* Add configuration calls below this comment */
+           olark.identify('7117-431-10-1219');
+           //UNTIL HERE
 
-    //Function that ends the session, so that it can be applied to the "end Session"-button
-    function sessionEnd() {
-      Surfly.currentSession.end();
-  }
+       }
+
+       //Function that ends the session, so that it can be applied to the "end Session"-button
+       function sessionEnd() {
+           Surfly.currentSession.end();
+       }
 </script>
 </body>
 </html>
